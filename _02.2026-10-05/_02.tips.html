@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap");
+      body {
+        margin: 0px;
+      }
+
+      .container {
+        background-color: #5574ff;
+        width: 100%;
+        max-width: 320px;
+        top: 50%;
+        left: 50%;
+        aspect-ratio: 1;
+        display: grid;
+        place-content: center;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
+
+      .box {
+        position: relative;
+        width: 150px;
+        aspect-ratio: 1;
+        border-radius: 20%;
+        background-color: #fff;
+        overflow: hidden;
+        transform: translateZ(0);
+      }
+
+      .box_paper {
+        display: grid;
+        place-content: center;
+        position: absolute;
+        inset: 0;
+        background-color: #002240;
+        animation:
+          translate 0.8s cubic-bezier(0.78, 0, 0.2, 1) 0s both,
+          border-radius 1.5s ease-in-out 0s forwards;
+      }
+
+      .box_text {
+        color: #ffffff;
+        font-family: "M PLUS 1", serif;
+        font-size: 78px;
+        font-weight: 900;
+        line-height: 1;
+        padding-bottom: 5px;
+        transform-origin: bottom center;
+        animation: scale 0.8s cubic-bezier(0.78, 0, 0.2, 1) 0.05s both;
+      }
+
+      @keyframes translate {
+        from {
+          transform: translate(-51%, 101%);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0%, 0%);
+        }
+      }
+      @keyframes border-radius {
+        from {
+          border-radius: 0 100% 0 0;
+        }
+        to {
+          border-radius: 0 0 0 0;
+        }
+      }
+      @keyframes scale {
+        from {
+          transform: scale(1.4, 0);
+        }
+        to {
+          transform: scale(1, 1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="box_paper">
+          <div class="box_text">A</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
