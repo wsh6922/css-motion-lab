@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      .container {
+        background-color: #ff5088;
+        width: 100%;
+        aspect-ratio: 1;
+        max-width: 320px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .box {
+        width: 105px;
+        aspect-ratio: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-100%, -50%);
+        display: grid;
+        place-content: center;
+
+        &::after {
+          background-color: #2b213a;
+          border-radius: 20%;
+          content: "";
+          position: absolute;
+          inset: 0;
+          transform-origin: right bottom;
+          animation: rolling 0.55s ease-out 0.1s both;
+          overflow: hidden;
+          display: block;
+        }
+      }
+
+      @keyframes rolling {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(90deg);
+        }
+        50.1% {
+          transform: translateX(100%);
+        }
+        75% {
+          transform: translateX(100%) rotate(8deg);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+    </div>
+  </body>
+</html>

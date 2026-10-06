@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      .container {
+        background-color: #ff9050;
+        width: 100%;
+        aspect-ratio: 1;
+        max-width: 320px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+      }
+
+      .box {
+        width: 105px;
+        aspect-ratio: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &::after {
+          background-color: #282c34;
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 12%;
+          transform-origin: left bottom;
+          animation:
+            translate 0.8s cubic-bezier(0, 0.7, 0.6, 1) 0s both,
+            rotate1 0.3s ease-in-out 0.7s both,
+            rotate2 0.7s ease-in-out 1s forwards;
+          display: block;
+          overflow: hidden;
+        }
+      }
+      @keyframes translate {
+        from {
+          translate: 100% 0;
+        }
+        to {
+          translate: 0 0;
+        }
+      }
+      @keyframes rotate1 {
+        from {
+          rotate: -14deg;
+        }
+        to {
+          rotate: -18deg;
+        }
+      }
+      @keyframes rotate2 {
+        0% {
+          rotate: -18deg;
+        }
+        40%,
+        70%,
+        100% {
+          rotate: 0deg;
+        }
+        55% {
+          rotate: -2deg;
+        }
+        85% {
+          rotate: -1deg;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+    </div>
+  </body>
+</html>
