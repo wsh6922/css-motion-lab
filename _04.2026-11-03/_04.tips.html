@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations</title>
+    <style>
+      * {
+        outline: 1px solid pink;
+      }
+
+      html {
+        background-color: #fff;
+      }
+
+      body {
+        margin: 0px;
+      }
+
+      .container {
+        background-color: #fff;
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+      }
+
+      .ripple {
+        width: 220px;
+        aspect-ratio: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &::before,
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          background-color: #ccc;
+          animation: fade-in-out 1.6s ease-out both infinite;
+        }
+
+        &::before {
+          animation-delay: 0s;
+        }
+        &::after {
+          animation-delay: 0.5s;
+        }
+      }
+
+      @keyframes fade-in-out {
+        from {
+          opacity: 1;
+          transform: scale(0);
+        }
+        80%,
+        to {
+          opacity: 0;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ripple"></div>
+    </div>
+  </body>
+</html>
